@@ -8,7 +8,10 @@
     mc:Ignorable="d"
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
-    <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center">
-        <Button Content="Hello World, Click Me!" x:Name="Button" />
+    <StackPanel VerticalAlignment="Top" HorizontalAlignment="Stretch">
+        <TextBlock>Add a todo</TextBlock>
+        <TextBox HorizontalAlignment="Stretch"></TextBox>
+        <Button HorizontalAlignment="Center">Add</Button>
+        <ListView x:Name="listView" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
     </StackPanel>
 </Page>
