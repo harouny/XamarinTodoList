@@ -9,11 +9,13 @@ namespace TodoList.iOS
     public class TodoTableViewSource : UITableViewSource
     {
         readonly IList<TodoItem> _tasks;
-        const string CellIdentifier = "TableCell";
+        private readonly ITodosService _todosService;
+        const string CellIdentifier = "TodoItemTableCell";
 
-        public TodoTableViewSource(IList<TodoItem> tasks)
+        public TodoTableViewSource(IList<TodoItem> tasks, ITodosService todosService)
         {
             _tasks = tasks;
+            _todosService = todosService;
         }
 
         public override UITableViewCell GetCell(UITableView tableView, NSIndexPath indexPath)
@@ -26,10 +28,8 @@ namespace TodoList.iOS
                 cell = new UITableViewCell(UITableViewCellStyle.Default, CellIdentifier);
             }
 
-            if (item.Done)
-            {
-                cell.Accessory = UITableViewCellAccessory.Checkmark;
-            }
+            cell.Accessory = item.Done ? UITableViewCellAccessory.Checkmark 
+                                       : UITableViewCellAccessory.None;
             cell.TextLabel.Text = item.Name;
 
             return cell;
@@ -38,6 +38,21 @@ namespace TodoList.iOS
         public override nint RowsInSection(UITableView tableview, nint section)
         {
             return _tasks.Count;
+        }
+
+        public override async void RowSelected(UITableView tableView, NSIndexPath indexPath)
+        {
+            var item = _tasks[indexPath.Row];
+            if (!item.Done)
+            {
+                await _todosService.CompleteTodoItemAsync(item);
+            }
+            else
+            {
+                await _todosService.MarkAsTodoItemAsInCompleteAsync(item);
+            }
+            tableView.ReloadRows(new[] { indexPath }, UITableViewRowAnimation.Fade);
+            tableView.DeselectRow(indexPath, true);
         }
     }
 }

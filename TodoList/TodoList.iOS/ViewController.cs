@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Threading.Tasks;
+using Foundation;
 using TodoList.Models;
 using UIKit;
 
@@ -22,7 +23,7 @@ namespace TodoList.iOS
 
         protected async Task PopulateTable()
         {
-            TodoTableView.Source = new TodoTableViewSource(await _todosService.GetTodoItemsAsync());
+            TodoTableView.Source = new TodoTableViewSource(await _todosService.GetTodoItemsAsync(), _todosService);
         }
 
         public override void DidReceiveMemoryWarning ()
@@ -40,6 +41,10 @@ namespace TodoList.iOS
             await _todosService.AddTodoItemAsync(todoItem);
             TodoTableView.ReloadData();
         }
+
+
+
+
     }
 }
 
