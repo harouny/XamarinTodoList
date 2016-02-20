@@ -6,7 +6,20 @@ namespace TodoList
 {
     public class TodosService : ITodosService
     {
-        private readonly List<TodoItem> _todoItems = new List<TodoItem>(); 
+        private readonly List<TodoItem> _todoItems = new List<TodoItem>();
+
+        public TodosService()
+        {
+            _todoItems.Add(new TodoItem()
+            {
+                Name = "Item one"
+            });
+
+            _todoItems.Add(new TodoItem()
+            {
+                Name = "Item two"
+            });
+        }
 
         public async Task<IList<TodoItem>> GetTodoItemsAsync()
         {

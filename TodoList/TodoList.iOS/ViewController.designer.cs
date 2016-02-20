@@ -1,9 +1,11 @@
-﻿//
-// This file has been generated automatically by MonoDevelop to store outlets and
-// actions made in the Xcode designer. If it is removed, they will be lost.
-// Manual changes to this file may not be handled correctly.
+// WARNING
+//
+// This file has been generated automatically by Xamarin Studio from the outlets and
+// actions declared in your storyboard file.
+// Manual changes to this file will not be maintained.
 //
 using Foundation;
+using System;
 using System.CodeDom.Compiler;
 using UIKit;
 
@@ -14,13 +16,33 @@ namespace TodoList.iOS
 	{
 		[Outlet]
 		[GeneratedCode ("iOS Designer", "1.0")]
-		UIButton Button { get; set; }
-        
+		UIButton AddBtn { get; set; }
+
+		[Outlet]
+		[GeneratedCode ("iOS Designer", "1.0")]
+		UITableView TodoTableView { get; set; }
+
+		[Outlet]
+		[GeneratedCode ("iOS Designer", "1.0")]
+		UITextField TodoText { get; set; }
+
+		[Action ("AddBtn_TouchUpInside:")]
+		[GeneratedCode ("iOS Designer", "1.0")]
+		partial void AddBtn_TouchUpInside (UIButton sender);
+
 		void ReleaseDesignerOutlets ()
 		{
-			if (Button != null) {
-				Button.Dispose ();
-				Button = null;
+			if (AddBtn != null) {
+				AddBtn.Dispose ();
+				AddBtn = null;
+			}
+			if (TodoTableView != null) {
+				TodoTableView.Dispose ();
+				TodoTableView = null;
+			}
+			if (TodoText != null) {
+				TodoText.Dispose ();
+				TodoText = null;
 			}
 		}
 	}
