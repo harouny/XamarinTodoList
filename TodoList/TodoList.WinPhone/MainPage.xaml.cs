@@ -12,6 +12,7 @@ using Windows.UI.Xaml.Data;
 using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
+using TodoList.Models;
 
 // The Blank Page item template is documented at http://go.microsoft.com/fwlink/?LinkId=391641
 
@@ -22,6 +23,7 @@ namespace TodoList.WinPhone
     /// </summary>
     public sealed partial class MainPage : Page
     {
+        private readonly ITodosService _todosService = new TodosService();
 
         public MainPage()
         {
@@ -35,9 +37,19 @@ namespace TodoList.WinPhone
         /// </summary>
         /// <param name="e">Event data that describes how this page was reached.
         /// This parameter is typically used to configure the page.</param>
-        protected override void OnNavigatedTo(NavigationEventArgs e)
+        protected async override void OnNavigatedTo(NavigationEventArgs e)
         {
-            
+            listView.ItemsSource = await _todosService.GetTodoItemsAsync();
+        }
+
+        private async void Button_Click(object sender, RoutedEventArgs e)
+        {
+            await _todosService.AddTodoItemAsync(new TodoItem()
+            {
+                Name = TodoText.Text
+            });
+            listView.ItemsSource = null;
+            listView.ItemsSource = await _todosService.GetTodoItemsAsync();
         }
     }
 }

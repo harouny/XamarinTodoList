@@ -8,10 +8,18 @@
     mc:Ignorable="d"
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
-    <StackPanel VerticalAlignment="Top" HorizontalAlignment="Stretch">
-        <TextBlock>Add a todo</TextBlock>
-        <TextBox HorizontalAlignment="Stretch"></TextBox>
-        <Button HorizontalAlignment="Center">Add</Button>
-        <ListView x:Name="listView" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+    <StackPanel VerticalAlignment="Top" HorizontalAlignment="Stretch" Margin="10">
+        <TextBlock FontSize="30">Add a todo</TextBlock>
+        <TextBox HorizontalAlignment="Stretch" Name="TodoText"></TextBox>
+        <Button HorizontalAlignment="Stretch" Click="Button_Click">Add</Button>
+        <ListView x:Name="listView" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock FontSize="21" Text="{Binding Name}"/>
+                    </StackPanel>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
     </StackPanel>
 </Page>
