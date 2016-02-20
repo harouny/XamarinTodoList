@@ -11,5 +11,10 @@
         {
             Done = true;
         }
+
+        public void MarkAsIncomplete()
+        {
+            Done = false;
+        }
     }
 }

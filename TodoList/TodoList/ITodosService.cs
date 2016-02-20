@@ -6,10 +6,12 @@ namespace TodoList
 {
     public interface ITodosService
     {
-        Task<IEnumerable<TodoItem>> GetTodoItemsAsync();
+        Task<IList<TodoItem>> GetTodoItemsAsync();
 
         Task AddTodoItemAsync(TodoItem todoItem);
 
         Task CompleteTodoItemAsync(TodoItem todoItem);
+
+        Task MarkAsTodoItemAsInCompleteAsync(TodoItem todoItem);
     }
 }

@@ -8,7 +8,7 @@ namespace TodoList
     {
         private readonly List<TodoItem> _todoItems = new List<TodoItem>(); 
 
-        public async Task<IEnumerable<TodoItem>> GetTodoItemsAsync()
+        public async Task<IList<TodoItem>> GetTodoItemsAsync()
         {
             return await Task.FromResult(_todoItems);
         }
@@ -21,6 +21,11 @@ namespace TodoList
         public async Task CompleteTodoItemAsync(TodoItem todoItem)
         {
             await Task.Run(() => todoItem.Complete());
+        }
+
+        public async Task MarkAsTodoItemAsInCompleteAsync(TodoItem todoItem)
+        {
+            await Task.Run(() => todoItem.MarkAsIncomplete());
         }
     }
 }
