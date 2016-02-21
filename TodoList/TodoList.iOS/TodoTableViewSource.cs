@@ -45,11 +45,11 @@ namespace TodoList.iOS
             var item = _tasks[indexPath.Row];
             if (!item.Done)
             {
-                await _todosService.CompleteTodoItemAsync(item);
+                await _todosService.CompleteTodoItemAsync(item.Id);
             }
             else
             {
-                await _todosService.MarkAsTodoItemAsInCompleteAsync(item);
+                await _todosService.MarkAsTodoItemAsInCompleteAsync(item.Id);
             }
             tableView.ReloadRows(new[] { indexPath }, UITableViewRowAnimation.Fade);
             tableView.DeselectRow(indexPath, true);

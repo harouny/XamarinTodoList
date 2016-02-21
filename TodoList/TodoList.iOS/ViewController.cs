@@ -1,7 +1,6 @@
 ﻿using System;
 using System.IO;
 using System.Threading.Tasks;
-using Foundation;
 using TodoList.Models;
 using UIKit;
 
@@ -9,12 +8,12 @@ namespace TodoList.iOS
 {
 	public partial class ViewController : UIViewController
 	{
-		ITodosService _todosService;
+	    private ITodosService _todosService;
 
 		public ViewController (IntPtr handle) : base (handle)
 		{
             UITableView.Appearance.TintColor = UIColor.FromRGB(0x6F, 0xA2, 0x2E);
-                    }
+        }
 
 		public override async void ViewDidLoad ()
 		{
@@ -40,18 +39,16 @@ namespace TodoList.iOS
             TodoTableView.Source = new TodoTableViewSource(await _todosService.GetTodoItemsAsync(), _todosService);
         }
 
-        public override void DidReceiveMemoryWarning ()
-		{
-			base.DidReceiveMemoryWarning ();
-			// Release any cached data, images, etc that aren't in use.
-		}
 
+	    // ReSharper disable once UnusedMember.Local
+	    // ReSharper disable once UnusedParameter.Local
         async partial void AddBtn_TouchUpInside(UIButton sender)
         {
-            var todoItem = new TodoItem()
+            var todoItem = new TodoItem
             {
                 Name = TodoText.Text
             };
+            TodoText.Text = string.Empty;
             await _todosService.AddTodoItemAsync(todoItem);
             TodoTableView.ReloadData();
         }

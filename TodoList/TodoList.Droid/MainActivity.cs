@@ -61,11 +61,11 @@ namespace TodoList.Droid
                 var todoItem = _taskListAdapter[args.Position];
                 if (todoItem.Done)
                 {
-                    await _todosService.MarkAsTodoItemAsInCompleteAsync(todoItem);
+                    await _todosService.MarkAsTodoItemAsInCompleteAsync(todoItem.Id);
                 }
                 else
                 {
-                    await _todosService.CompleteTodoItemAsync(todoItem);
+                    await _todosService.CompleteTodoItemAsync(todoItem.Id);
 
                 }
                 RefreshList();

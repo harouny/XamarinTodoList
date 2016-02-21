@@ -32,21 +32,23 @@ namespace TodoList
             });
         }
 
-        public async Task CompleteTodoItemAsync(TodoItem todoItem)
+        public async Task CompleteTodoItemAsync(int todoItemId)
         {
             await Task.Run(() =>
             {
-                var item = _todoItems.Single(obj => obj.Id == todoItem.Id);
+                var item = _todoItems
+                .Single(obj => obj.Id == todoItemId);
                 item.Complete();
                 _db.SaveItem(item);
             });
         }
 
-        public async Task MarkAsTodoItemAsInCompleteAsync(TodoItem todoItem)
+        public async Task MarkAsTodoItemAsInCompleteAsync(int todoItemId)
         {
             await Task.Run(() =>
             {
-                var item = _todoItems.Single(obj => obj.Id == todoItem.Id);
+                var item = _todoItems
+                .Single(obj => obj.Id == todoItemId);
                 item.MarkAsIncomplete();
                 _db.SaveItem(item);
             });

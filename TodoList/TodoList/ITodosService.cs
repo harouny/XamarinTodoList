@@ -10,8 +10,8 @@ namespace TodoList
 
         Task AddTodoItemAsync(TodoItem todoItem);
 
-        Task CompleteTodoItemAsync(TodoItem todoItem);
+        Task CompleteTodoItemAsync(int todoItemId);
 
-        Task MarkAsTodoItemAsInCompleteAsync(TodoItem todoItem);
+        Task MarkAsTodoItemAsInCompleteAsync(int todoItemId);
     }
 }
