@@ -1,4 +1,5 @@
-﻿using System.Threading.Tasks;
+﻿using System.IO;
+using System.Threading.Tasks;
 using Android.App;
 using Android.Widget;
 using Android.OS;
@@ -16,14 +17,19 @@ namespace TodoList.Droid
         Button _addTodoButton;
         ListView _todoList;
 	    EditText _todoText;
-	    readonly ITodosService _todosService = new TodosService();
+	    ITodosService _todosService;
 
         protected override async void OnCreate (Bundle bundle)
 		{
 			base.OnCreate (bundle);
 
-			// Set our view from the "main" layout resource
-			SetContentView (Resource.Layout.Main);
+            var sqliteFilename = "TodoItemDB.db3";
+            string libraryPath = System.Environment.GetFolderPath(System.Environment.SpecialFolder.Personal);
+            var path = Path.Combine(libraryPath, sqliteFilename);
+            _todosService = new TodosService(path);
+
+            // Set our view from the "main" layout resource
+            SetContentView (Resource.Layout.Main);
 
             //Find our controls
             _todoList = FindViewById<ListView>(Resource.Id.TodoList);

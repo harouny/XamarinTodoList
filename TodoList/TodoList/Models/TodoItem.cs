@@ -1,8 +1,11 @@
-﻿namespace TodoList.Models
+﻿using SQLite;
+
+namespace TodoList.Models
 {
     public class TodoItem
     {
-        public string Id { get; set; }
+        [PrimaryKey, AutoIncrement]
+        public int Id { get; set; }
         public string Name { get; set; }
         public string Notes { get; set; }
         public bool Done { get; set; }
