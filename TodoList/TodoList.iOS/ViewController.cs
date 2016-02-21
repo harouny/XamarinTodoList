@@ -50,6 +50,7 @@ namespace TodoList.iOS
             };
             TodoText.Text = string.Empty;
             await _todosService.AddTodoItemAsync(todoItem);
+            TodoText.ResignFirstResponder();
             TodoTableView.ReloadData();
         }
 
