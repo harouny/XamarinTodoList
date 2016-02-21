@@ -1,0 +1,27 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:viewModels="clr-namespace:TodoList.ViewModels;assembly=TodoList"
+             x:Class="TodoList.Views.Home">
+  
+    <ContentPage.BindingContext>
+    <viewModels:HomeViewModel />
+  </ContentPage.BindingContext>
+  
+  <StackLayout Orientation="Vertical">
+  
+    <Label Text="Todo List:"></Label>
+    <Entry Text="{Binding TodoText}"></Entry>
+    <Button Text="Add" Command="{Binding AddTodoCommand}"></Button>
+   <ListView ItemsSource="{Binding TodoItems}">
+      <ListView.ItemTemplate>
+        <DataTemplate>
+          <SwitchCell Text="{Binding Name}" On="{Binding Done}" OnChanged="SwitchCell_OnOnChanged"></SwitchCell>
+        </DataTemplate>
+      </ListView.ItemTemplate>
+    </ListView>
+  
+  </StackLayout>
+
+
+</ContentPage>
