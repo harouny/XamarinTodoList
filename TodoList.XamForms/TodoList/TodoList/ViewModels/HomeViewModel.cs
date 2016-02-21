@@ -7,7 +7,7 @@ namespace TodoList.ViewModels
 {
     public class HomeViewModel
     {
-        private readonly ITodosService _todoService = new InMemoryTodosService();
+        private readonly ITodosService _todoService = new TodosService();
 
         public HomeViewModel()
         {
