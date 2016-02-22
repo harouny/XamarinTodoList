@@ -1,5 +1,4 @@
-﻿using System.Collections.Generic;
-using System.Collections.ObjectModel;
+﻿using System.Collections.ObjectModel;
 using System.Linq;
 using System.Threading.Tasks;
 using SQLite;
@@ -31,28 +30,32 @@ namespace TodoList
             await Task.Run(() => 
             {
                     _db.SaveItem(todoItem);
-                    TodoItems.Add(todoItem);
+                
             });
+            TodoItems.Add(todoItem);
+            
         }
 
         public async Task CompleteTodoItemAsync(int todoItemId)
         {
+            var item = TodoItems
+                .Single(obj => obj.Id == todoItemId);
+            item.Complete();
+
             await Task.Run(() =>
             {
-                var item = TodoItems
-                .Single(obj => obj.Id == todoItemId);
-                item.Complete();
                 _db.SaveItem(item);
             });
         }
 
         public async Task MarkAsTodoItemAsInCompleteAsync(int todoItemId)
         {
+            var item = TodoItems
+                .Single(obj => obj.Id == todoItemId);
+            item.MarkAsIncomplete();
+
             await Task.Run(() =>
             {
-                var item = TodoItems
-                .Single(obj => obj.Id == todoItemId);
-                item.MarkAsIncomplete();
                 _db.SaveItem(item);
             });
         }

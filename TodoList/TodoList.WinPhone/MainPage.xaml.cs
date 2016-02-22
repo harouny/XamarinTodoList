@@ -1,4 +1,6 @@
-﻿using Windows.UI.Xaml;
+﻿using System.IO;
+using Windows.Storage;
+using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Navigation;
 using TodoList.Models;
@@ -12,10 +14,14 @@ namespace TodoList.WinPhone
     /// </summary>
     public sealed partial class MainPage : Page
     {
-        private readonly ITodosService _todosService = new InMemoryTodosService();
+        private readonly ITodosService _todosService;
 
         public MainPage()
         {
+            var sqliteFilename = "TodoSQLite.db3";
+            string path = Path.Combine(ApplicationData.Current.LocalFolder.Path, sqliteFilename);
+            _todosService = new TodosService(path);
+
             InitializeComponent();
 
             NavigationCacheMode = NavigationCacheMode.Required;
