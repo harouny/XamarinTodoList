@@ -10,7 +10,7 @@ namespace TodoList.Droid
     {
         public string GetDbPath()
         {
-            var sqliteFilename = "TodoSQLite.db3";
+            var sqliteFilename = "TodoItemDB4.db3";
             string documentsPath = System.Environment.GetFolderPath(System.Environment.SpecialFolder.Personal); // Documents folder
             var path = Path.Combine(documentsPath, sqliteFilename);
             return path;

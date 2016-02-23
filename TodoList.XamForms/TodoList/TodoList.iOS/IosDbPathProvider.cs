@@ -11,7 +11,7 @@ namespace TodoList.iOS
     {
         public string GetDbPath()
         {
-            var sqliteFilename = "TodoSQLite.db3";
+            var sqliteFilename = "TodoItemDB4.db3";
             string documentsPath = Environment.GetFolderPath(Environment.SpecialFolder.Personal); // Documents folder
             string libraryPath = Path.Combine(documentsPath, "..", "Library"); // Library folder
             var path = Path.Combine(libraryPath, sqliteFilename);

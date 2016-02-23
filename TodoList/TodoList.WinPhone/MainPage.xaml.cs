@@ -18,7 +18,7 @@ namespace TodoList.WinPhone
 
         public MainPage()
         {
-            var sqliteFilename = "TodoSQLite.db3";
+            var sqliteFilename = "TodoItemDB4.db3";
             string path = Path.Combine(ApplicationData.Current.LocalFolder.Path, sqliteFilename);
             _todosService = new TodosService(path);
 
