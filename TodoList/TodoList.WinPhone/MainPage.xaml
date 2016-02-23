@@ -15,8 +15,9 @@
         <ListView x:Name="listView" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
             <ListView.ItemTemplate>
                 <DataTemplate>
-                    <StackPanel Orientation="Horizontal">
-                        <TextBlock FontSize="21" Text="{Binding Name}"/>
+                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Stretch">
+                        <TextBlock  HorizontalAlignment="Stretch" FontSize="21" Text="{Binding Name}"/>
+                        <ToggleSwitch OffContent="" OnContent=""  IsOn="{Binding Done}"  Toggled="ToggleSwitch_OnToggled"></ToggleSwitch>
                     </StackPanel>
                 </DataTemplate>
             </ListView.ItemTemplate>

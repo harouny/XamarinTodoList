@@ -46,5 +46,9 @@ namespace TodoList.WinPhone
             listView.ItemsSource = null;
             listView.ItemsSource = await _todosService.GetTodoItemsAsync();
         }
+
+        private void ToggleSwitch_OnToggled(object sender, RoutedEventArgs e)
+        {
+        }
     }
 }
