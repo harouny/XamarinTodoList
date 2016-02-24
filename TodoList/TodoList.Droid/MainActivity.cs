@@ -23,7 +23,7 @@ namespace TodoList.Droid
 		{
 			base.OnCreate (bundle);
 
-            var sqliteFilename = "TodoItemDB.db3";
+            var sqliteFilename = "TodoItemDB4.db3";
             string libraryPath = System.Environment.GetFolderPath(System.Environment.SpecialFolder.Personal);
             var path = Path.Combine(libraryPath, sqliteFilename);
             _todosService = new TodosService(path);

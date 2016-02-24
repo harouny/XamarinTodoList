@@ -22,7 +22,7 @@ namespace TodoList.iOS
 		    if (_todosService == null)
 		    {
                 // Create the database file
-                var sqliteFilename = "TodoItemDB.db3";
+                var sqliteFilename = "TodoItemDB4.db3";
                 // we need to put in /Library/ on iOS5.1 to meet Apple's iCloud terms
                 // (they don't want non-user-generated data in Documents)
                 string documentsPath = Environment.GetFolderPath(Environment.SpecialFolder.Personal); // Documents folder

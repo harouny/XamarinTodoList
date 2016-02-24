@@ -25,7 +25,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TodoList.Windows", "TodoLis
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TodoList", "TodoList.XamForms\TodoList\TodoList\TodoList.csproj", "{0974A4F3-19BE-44CF-83F7-5813844F617F}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "TodoList.Xam", "TodoList.Xam", "{D533B9A1-8485-40DC-B775-44435CA83BE2}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "TodoList.Native", "TodoList.Native", "{D533B9A1-8485-40DC-B775-44435CA83BE2}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
